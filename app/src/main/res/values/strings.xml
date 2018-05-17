@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">Chat Application</string>
+
+    <string name="sLogin">LOGIN</string>
+    <string name="sRegister">REGISTER</string>
+    <string name="sLogout">LOGOUT</string>
+    <string name="sSend">SEND</string>
+    <string name="sRefresh">REFRESH</string>
+
+    <string name="sUsernameMessage1">Username</string>
+    <string name="sUsernameMessage2">username</string>
+    <string name="sPasswordMessage1">Password</string>
+    <string name="sPasswordMessage2">password</string>
+    <string name="sFirstName">First Name</string>
+    <string name="sLastName">Last Name</string>
+    <string name="sEmail">e-mail</string>
+    <string name="sGender">gender</string>
+    <string name="sNotifications">Accept Notifications</string>
+    <string name="sBirthDate">birth date</string>
+    <string name="sMessage">Message text</string>
+    <string name="sMessageSent">Message is sent</string>
+    <string name="sMyContactList">My chat list</string>
+
+    <string name="sContact1">Josie Enyeart</string>
+    <string name="sContact2">Mario Gartrell</string>
+    <string name="sContact3">Rachel Kuester</string>
+    <string name="sContact4">Stacia Gilmour</string>
+    <string name="sContact5">Robbie Stam</string>
+    <string name="sContact6">Jack Nicholson</string>
+    <string name="sContact7">Marlon Brando</string>
+    <string name="sContact8">Robert De Niro</string>
+    <string name="sContact9">Al Pacino</string>
+    <string name="sContact10">Daniel Day-Lewis</string>
+
+    <string name="sErrorAlreadyExist">User with that username already exist! Try something else!</string>
+    <string name="sErrorDoesNotExist">User with that username does not exist!</string>
+    <string name="sLoggedContact">Logged contact ID</string>
+    <string name="sReceiverContact">Receiver contact ID</string>
+
+    <string name="sRMessage1">Hey!!!</string>
+    <string name="sSMessage1">Hello, how are you?</string>
+    <string name="sRMessage2">I\'m fine thanks. What\'s up?</string>
+    <string name="sSMessage2">Long time no see</string>
+    <string name="sRMessage3">Nothing special, will I see you tonight?</string>
+    <string name="sSMessage3">Sure, meet me at 8?</string>
+    <string name="sRMessage4">Fine, see you!</string>
+
+    <string name="user_successfully_registered">User is successfully registered!</string>
+    <string name="register_error">Unable to register on server!</string>
+    <string name="logIn_error">User cannot be logged in!"</string>
+    <string name="cannot_logout_error">User cannot be logged out!</string>
+    <string name="message_sent">Message sent!</string>
+    <string name="message_send_error">Message not sent!</string>
+    <string name="get_message_error">Can not load messages!</string>
+
+    <array name="genders">
+        <item>male</item>
+        <item>female</item>
+    </array>
+</resources>
