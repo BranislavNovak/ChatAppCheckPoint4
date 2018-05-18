@@ -282,4 +282,41 @@ public class HttpHelper {
             return null;
         }
     }
+
+    public boolean httpDeleteContact(Context message_context, String urlString, JSONObject jsonObject) throws IOException, JSONException{
+
+        HttpURLConnection urlConnection;
+        java.net.URL url = new URL(urlString);
+
+        SharedPreferences prefs = message_context.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        String sessionId = prefs.getString("sessionId", null);
+
+        urlConnection = (HttpURLConnection) url.openConnection();
+        urlConnection.setRequestMethod("DELETE");
+        urlConnection.setRequestProperty("sessionid", sessionId);
+        urlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+        urlConnection.setRequestProperty("Accept","application/json");
+
+        try {
+            urlConnection.connect();
+            Log.i("try", "Upao u try za urtConnection");
+        } catch (IOException e) {
+            Log.i("catch", "Nije speo da uradi urlConnection.connect();");
+            return false;
+        }
+
+
+        DataOutputStream os = new DataOutputStream(urlConnection.getOutputStream());
+
+        os.writeBytes(jsonObject.toString());
+        os.flush();
+        os.close();
+
+        int responseCode = urlConnection.getResponseCode();
+        // String responseMsg = urlConnection.getResponseMessage();
+
+
+        urlConnection.disconnect();
+        return (responseCode==SUCCESS);
+    }
 }

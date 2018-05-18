@@ -5,7 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -27,11 +29,13 @@ public class ContactsActivity extends AppCompatActivity implements View.OnClickL
     public String userId;
     public ContactsAdapter adapter;
 
+    private String contact_to_delete;
     private HttpHelper httphelper;
     private Handler handler;
     private static String BASE_URL = "http://18.205.194.168:80";
     private static String CONTACTS_URL = BASE_URL + "/contacts";
     private static String LOGOUT_URL = BASE_URL + "/logout";
+    private static String DELETE_URL = BASE_URL + "/contacts/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +49,8 @@ public class ContactsActivity extends AppCompatActivity implements View.OnClickL
         bRefresh.setOnClickListener(this);
 
         // new chatDataBase instance and reading contacts from database
-        //chatDbHelper = new ChatDbHelper();
-        //contacts = chatDbHelper.readContacts();
+        // chatDbHelper = new ChatDbHelper();
+        // contacts = chatDbHelper.readContacts();
 
         // Getting logged user userid, from SharedPreference file
         SharedPreferences sharedPref = getSharedPreferences(PREFERENCES_NAME, MODE_PRIVATE);
@@ -58,6 +62,48 @@ public class ContactsActivity extends AppCompatActivity implements View.OnClickL
 
         httphelper = new HttpHelper();
         handler = new Handler();
+
+
+        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        JSONObject jsonObject = new JSONObject();
+                        Contact contact_model = (Contact) adapter.getItem(i);
+                        contact_to_delete = contact_model.getmUserName();
+
+                        try{
+                            jsonObject.put("username", contact_to_delete);
+
+                            final boolean success = httphelper.httpDeleteContact(ContactsActivity.this, (DELETE_URL+contact_to_delete), jsonObject);
+
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if(success){
+                                        adapter.removeContact(i);
+                                        updateContactList();
+                                    }else{
+                                        Toast.makeText(ContactsActivity.this, "Cannot delete user", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }).start();
+
+                return true;
+            }
+        });
+
     }
 
 
@@ -107,7 +153,7 @@ public class ContactsActivity extends AppCompatActivity implements View.OnClickL
         super.onResume();
         // Deleting logged user from contacts list
         //deleteLoggedUserFromList();
-        updateContactList();
+        //updateContactList();
     }
 
     // Updating contacts list

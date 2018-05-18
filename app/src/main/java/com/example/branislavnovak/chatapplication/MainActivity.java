@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button bRegister;
     private Button bLogin;
     private EditText usernameTypedText, passwordTypedText;
-    private ChatDbHelper chatDbHelper;
+    //private ChatDbHelper chatDbHelper;
 
     private HttpHelper httpHelper;
     private Handler handler;

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ChatApplication.iml" filepath="$PROJECT_DIR$/ChatApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ChatAppCheckPoint4.iml" filepath="$PROJECT_DIR$/ChatAppCheckPoint4.iml" />
+      <module fileurl="file://C:\Users\student\Desktop\adada\ChatAppCheckPoint4\ChatApplication.iml" filepath="C:\Users\student\Desktop\adada\ChatAppCheckPoint4\ChatApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\student\Desktop\adada\ChatAppCheckPoint4\app\app.iml" filepath="C:\Users\student\Desktop\adada\ChatAppCheckPoint4\app\app.iml" />
     </modules>
   </component>
 </project>
